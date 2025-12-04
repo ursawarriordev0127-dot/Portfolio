@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+.header {
+    @apply items-center sticky top-0 bg-gray-900 text-white p-4 flex gap-4 z-50 justify-between
+}
+
+.nav-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(168, 85, 247, 0.1));
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.nav-button:hover::before {
+    opacity: 1;
+}
+
+.nav-button-home {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(168, 85, 247, 0.2));
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.nav-button-home::before {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+    border: 1px solid rgba(6, 182, 212, 0.2);
+}
