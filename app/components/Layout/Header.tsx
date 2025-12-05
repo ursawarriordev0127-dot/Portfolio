@@ -26,24 +26,52 @@ export default function Header() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'experiences', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+  // Function to determine active section based on scroll position
+  const updateActiveSection = () => {
+    const sections = ['home', 'about', 'experiences', 'skills', 'projects', 'contact'];
+    const scrollPosition = window.scrollY + 100; // Offset for header
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const { offsetTop, offsetHeight } = element;
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          setActiveSection(section);
+          break;
         }
       }
+    }
+  };
+
+  useEffect(() => {
+    // Check initial position - prioritize URL hash, then scroll position
+    const initializeActiveSection = () => {
+      // Check for URL hash first (direct navigation)
+      const urlHash = window.location.hash.replace('#', '');
+      const validSections = ['home', 'about', 'experiences', 'skills', 'projects', 'contact'];
+
+      if (urlHash && validSections.includes(urlHash)) {
+        setActiveSection(urlHash);
+        return;
+      }
+
+      // If no hash, check scroll position after DOM is fully rendered
+      setTimeout(() => {
+        updateActiveSection();
+      }, 100);
+    };
+
+    // Run on mount
+    initializeActiveSection();
+
+    // Also run on scroll
+    const handleScroll = () => {
+      updateActiveSection();
     };
 
     window.addEventListener('scroll', handleScroll);
+
+    // Clean up
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

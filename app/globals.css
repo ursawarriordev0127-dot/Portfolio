@@ -24,3 +24,193 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Animations for Project Cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Staggered card entrance */
+.card-entrance-0 { animation: fadeInUp 0.8s ease-out 0s both; }
+.card-entrance-1 { animation: fadeInUp 0.8s ease-out 0.2s both; }
+.card-entrance-2 { animation: fadeInUp 0.8s ease-out 0.4s both; }
+
+/* 3D Transform Styles */
+.preserve-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out;
+}
+
+.preserve-3d:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Enhanced glow effects */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #06b6d4, #8b5cf6, #ec4899, #10b981);
+  background-size: 400% 400%;
+  animation: rainbow-border 3s ease infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-glow:hover::before {
+  opacity: 0.3;
+}
+
+/* Footer Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes linkExpand {
+  from {
+    width: 0;
+    margin-right: 0;
+  }
+  to {
+    width: 8px;
+    margin-right: 8px;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.6), 0 0 40px rgba(168, 85, 247, 0.3);
+  }
+}
+
+.footer-link-underline {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-link-underline::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+  transition: width 0.3s ease;
+}
+
+.footer-link-underline:hover::before {
+  width: 100%;
+}
+
+.social-icon-glow:hover {
+  animation: glowPulse 2s infinite;
+}
+
+/* Newsletter form focus styles */
+.newsletter-input:focus {
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+  border-color: #06b6d4;
+}
+
+/* Cyber Grid Background Effect */
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Floating particles animation */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float-particle 4s ease-in-out infinite;
+}
