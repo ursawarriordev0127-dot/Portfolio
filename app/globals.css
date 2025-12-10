@@ -214,3 +214,299 @@ html {
 .animate-float {
   animation: float-particle 4s ease-in-out infinite;
 }
+
+/* Hero Section Animations */
+@keyframes spin-slower {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slower {
+  animation: spin-slower 8s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 6s linear infinite;
+}
+
+/* Conic Ring Gradients */
+.conic-ring {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(34, 211, 238, 0.3) 45deg,
+    rgba(168, 85, 247, 0.3) 135deg,
+    rgba(236, 72, 153, 0.3) 225deg,
+    rgba(34, 211, 238, 0.3) 315deg,
+    transparent 360deg
+  );
+  border-radius: 50%;
+}
+
+.conic-ring-2 {
+  background: conic-gradient(
+    from 180deg,
+    transparent 0deg,
+    rgba(168, 85, 247, 0.4) 90deg,
+    rgba(236, 72, 153, 0.4) 180deg,
+    rgba(34, 211, 238, 0.4) 270deg,
+    transparent 360deg
+  );
+  border-radius: 50%;
+}
+
+/* Text Gradient Animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(45deg, #ec4899, #8b5cf6, #06b6d4, #ec4899);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Orbitron Font */
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+/* Background Clip Border Effect */
+.bg-clip-border {
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+/* Loading Progress Bar Animation */
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+/* Marquee Animation for Certifications */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee 60s linear infinite;
+  width: max-content;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+}
+
+/* Pause animation on hover for individual cards */
+.group\/marquee:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* Gradient fade edges for marquee */
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgb(17, 24, 39), transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgb(17, 24, 39), transparent);
+}
+
+/* Card Corner Arrows */
+.card-corner-arrow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+
+.card-corner-arrow.top-0.left-0 {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid rgba(6, 182, 212, 0.3);
+  border-left: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+.card-corner-arrow.top-0.right-0 {
+  top: 8px;
+  right: 8px;
+  border-top: 2px solid rgba(6, 182, 212, 0.3);
+  border-right: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+.card-corner-arrow.bottom-0.right-0 {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+  border-right: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+.card-corner-arrow.bottom-0.left-0 {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+  border-left: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+/* Card corner hover effect */
+.group:hover .card-corner-arrow {
+  border-color: rgba(6, 182, 212, 0.6);
+}
+
+/* Card Shine Effect */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.group:hover .card-shine {
+  left: 150%;
+}
+
+/* Card Shine Diagonal Effect */
+.card-shine-diagonal {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 70%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.group:hover .card-shine-diagonal {
+  left: 100%;
+}
+
+/* Card Glass Effect */
+.card-glass {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* 3D Earth Scan Line Animation */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan {
+  animation: scan 8s linear infinite;
+}
+
+/* 3D Earth Pulse Animation */
+@keyframes earth-pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.2), 0 0 60px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(34, 211, 238, 0.4), 0 0 100px rgba(168, 85, 247, 0.2);
+  }
+}
+
+.earth-glow {
+  animation: earth-pulse 4s ease-in-out infinite;
+}
+
+/* 3D Orbit Animation */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 20s linear infinite;
+}
+
+/* Rainbow border animation */
+@keyframes rainbow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
